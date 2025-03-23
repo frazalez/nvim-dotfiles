@@ -22,11 +22,23 @@ return {
 
   {
     "neovim/nvim-lspconfig",
+    dependencies = { "saghen/blink.cmp" },
     opts = {
       servers = {
         c3_lsp = {},
+        ols = {},
+        zls = {},
+        taplo = {},
       },
     },
+
+    config = function(_, opts)
+      local lspconfig = require("lspconfig")
+      for server, config in pairs(opts.servers) do
+        config.capabilities = require("blink.cmp").get_lsp_capabilities()
+        lspconfig[server].setup(config)
+      end
+    end,
   },
 
   {
@@ -94,6 +106,20 @@ return {
     "LazyVim/LazyVim",
     opts = {
       colorscheme = "monokai",
+    },
+  },
+
+  {
+    "saghen/blink.cmp",
+    opts = {
+      keymap = { preset = "super-tab" },
+      fuzzy = {
+        sorts = {
+          "exact",
+          "score",
+          "sort_text",
+        },
+      },
     },
   },
 }
