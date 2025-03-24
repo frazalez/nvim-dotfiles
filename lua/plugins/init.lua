@@ -31,6 +31,7 @@ return {
         bashls = {},
         clangd = {},
         phpactor = {},
+        pyre = {},
       },
     },
 
