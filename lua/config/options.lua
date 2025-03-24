@@ -9,3 +9,9 @@ vim.filetype.add({
     c3t = "c3",
   },
 })
+
+local o = vim.o
+o.tabstop = 8
+o.shiftwidth = 8
+o.expandtab = true
+o.autoindent = true
