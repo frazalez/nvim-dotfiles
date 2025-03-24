@@ -19,7 +19,6 @@ return {
       },
     },
   },
-
   {
     "neovim/nvim-lspconfig",
     dependencies = { "saghen/blink.cmp" },
@@ -29,6 +28,9 @@ return {
         ols = {},
         zls = {},
         taplo = {},
+        bashls = {},
+        clangd = {},
+        phpactor = {},
       },
     },
 
@@ -47,6 +49,7 @@ return {
     opts = {
       startVisible = true,
       showBlankVirtLine = true,
+
       highlightColor = { link = "Comment" },
       hints = {
         Caret = { text = "^", prio = 2 },
