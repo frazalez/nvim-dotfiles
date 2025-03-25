@@ -11,7 +11,7 @@ vim.filetype.add({
 })
 
 local o = vim.o
-o.tabstop = 8
-o.shiftwidth = 8
+o.tabstop = 4
+o.shiftwidth = 4
 o.expandtab = true
 o.autoindent = true

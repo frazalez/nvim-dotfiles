@@ -13,15 +13,10 @@ return {
         },
       }
     end,
-    opts = {
-      ensure_installed = {
-        "c3",
-      },
-    },
   },
   {
     "neovim/nvim-lspconfig",
-    dependencies = { "saghen/blink.cmp" },
+    dependencies = { "ms-jpq/coq_nvim" },
     opts = {
       servers = {
         c3_lsp = {},
@@ -37,19 +32,30 @@ return {
 
     config = function(_, opts)
       local lspconfig = require("lspconfig")
+      local coq = require("coq")
       for server, config in pairs(opts.servers) do
-        config.capabilities = require("blink.cmp").get_lsp_capabilities()
-        lspconfig[server].setup(config)
+        lspconfig[server].setup(coq.lsp_ensure_capabilities(config))
       end
     end,
+  },
+
+  {
+    "ms-jpq/coq_nvim",
+  },
+
+  {
+    "sontungexpt/better-diagnostic-virtual-text",
+    opts = {
+      inline = true,
+    },
   },
 
   {
     "tris203/precognition.nvim",
     event = "VeryLazy",
     opts = {
-      startVisible = true,
-      showBlankVirtLine = true,
+      startVisible = false,
+      showBlankVirtLine = false,
 
       highlightColor = { link = "Comment" },
       hints = {
@@ -110,20 +116,6 @@ return {
     "LazyVim/LazyVim",
     opts = {
       colorscheme = "monokai",
-    },
-  },
-
-  {
-    "saghen/blink.cmp",
-    opts = {
-      keymap = { preset = "super-tab" },
-      fuzzy = {
-        sorts = {
-          "exact",
-          "score",
-          "sort_text",
-        },
-      },
     },
   },
 }
