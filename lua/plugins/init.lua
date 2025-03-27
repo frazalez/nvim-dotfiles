@@ -1,6 +1,14 @@
 return {
 
   {
+    "mfussenegger/nvim-dap",
+  },
+
+  {
+    "rcarriga/nvim-dap-ui",
+  },
+
+  {
     "nvim-treesitter/nvim-treesitter",
     init = function()
       ---@class parsers
